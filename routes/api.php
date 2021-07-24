@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+#Webhooks
+Route::prefix('webhook/product/')->middleware('shopify.webhook')->group(function () {
+    Route::post('create', 'ShopifyWebhookController@productCreate');
+});
