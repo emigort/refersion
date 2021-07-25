@@ -8,7 +8,7 @@
         #Refersion api
         REFERSION_PUB=<<Value here>>
         REFERSION_SECRET=<<Value here>>
-        REFERSION_BASE_URL="https://www.refersion.com/api/"`
+        REFERSION_BASE_URL="https://www.refersion.com/api/"
 - endpoints: 
     - /api/webhook/product/create
     
