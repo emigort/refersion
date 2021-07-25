@@ -6,7 +6,7 @@ use App\Clients\RefersionApiClient;
 
 class AffiliationService
 {
-    public function getAffiliateId($variant): array
+    public function getAffiliateId($variant): int
     {
         $find_me = config('refersion.sku_key_word');
         $find_me_length = strlen($find_me);
@@ -30,9 +30,9 @@ class AffiliationService
             $RefersionApiClient = new RefersionApiClient();
             $res = $RefersionApiClient->createConversionTrigger($affiliate_id, $sku, $type);
             if ($res->successful()) {
-                //do something with result
+               return $res->body(); //do something with result
             } else {
-                //handle the error
+               return $res->json();
             }
         }
     }

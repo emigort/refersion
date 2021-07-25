@@ -19,7 +19,7 @@ class ShopifyWebhooks
     {
         $hmac_header = $request->header('x-shopify-hmac-sha256', null);
         $data = $request->getContent();
-        if(!ShopifyWebhookService::verifyWebhook($data, $hmac_header)){
+        if(ShopifyWebhookService::verifyWebhook($data, $hmac_header)){
             return $next($request);
         }
         abort(403);

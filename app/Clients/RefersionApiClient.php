@@ -34,7 +34,10 @@ class RefersionApiClient
             $this->pub_key = env('REFERSION_PUB');
             $this->secret_key = env('REFERSION_SECRET');
             $this->base_url = env('REFERSION_BASE_URL');
-            $this->client = Http::withBasicAuth($this->pub_key, $this->secret_key)
+            $this->client = Http::withHeaders([
+                'Refersion-Public-Key' => $this->pub_key,
+                'Refersion-Secret-Key' => $this->secret_key,
+            ])
                 ->baseUrl($this->base_url);
         } catch (Exception $e) {
             throw new Exception($e->getMessage());

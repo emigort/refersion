@@ -17,8 +17,9 @@ class ShopifyWebhookController extends Controller
             echo 'Done';
             $payload = json_decode($request->getContent());
             $AffiliationService = new AffiliationService;
-            $AffiliationService->createConversionTriggerBySku($payload->variants);
-            //I think this should be send to a queue because if a products has
+            return $AffiliationService->createConversionTriggerBySku($payload->variants);
+            //I think this should be send to a queue  or execute a lambda
+            // because if a products has
             //several variants the execution could be longer that what the webhook is
             //allowed to wait for the response
         } catch (Exception $e) {
